@@ -13,7 +13,7 @@ function MoviePage() {
   // const location = useLocation();
 
   React.useEffect(() => {
-    async function getMovies(id) {
+    async function getMovies() {
       try {
         const response = await axios.get(
           `https://api.themoviedb.org/3/movie/${id}`,
@@ -35,7 +35,7 @@ function MoviePage() {
         console.error(error);
       }
     }
-    getMovies(id);
+    getMovies();
   }, []);
 
   const year = date.substring(0, 4);

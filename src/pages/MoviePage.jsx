@@ -24,10 +24,10 @@ function MoviePage() {
           }
         );
           const movie = response.data;
-          console.log(movie.poster_path)
+          // console.log(movie.poster_path)
         const genre = response.data.genres;
         const date = response.data.release_date;
-        console.log(response);
+        // console.log(response);
         setMovie(movie);
         setGenre(genre);
         setDate(date);
@@ -36,7 +36,7 @@ function MoviePage() {
       }
     }
     getMovies();
-  });
+  }, []);
 
   const year = date.substring(0, 4);
   return (

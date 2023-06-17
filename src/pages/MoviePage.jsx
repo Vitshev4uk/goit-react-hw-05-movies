@@ -36,7 +36,7 @@ function MoviePage() {
       }
     }
     getMovies();
-  }, []);
+  }, [id]);
 
   const year = date.substring(0, 4);
   return (

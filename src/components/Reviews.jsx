@@ -28,7 +28,7 @@ function Reviews() {
       }
     }
     getMovies();
-  }, []);
+  }, [id]);
 
   return <>
     <div>

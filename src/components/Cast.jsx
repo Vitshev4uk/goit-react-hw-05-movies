@@ -29,7 +29,7 @@ const [movie, setMovie] = React.useState([]);
       }
     }
     getMovies();
-  }, []);
+  }, [id]);
 
   return <>
     <div>

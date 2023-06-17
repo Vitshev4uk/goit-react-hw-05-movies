@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { useParams, useLocation, NavLink, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 
 function MoviePage() {
   const [movie, setMovie] = React.useState([]);

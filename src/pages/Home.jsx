@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import css from '../css/Home.module.css';
 
 function Home() {
   const [movies, setMovie] = React.useState([]);
@@ -25,19 +26,23 @@ function Home() {
     }
     getMovies();
   }, []);
-    
+
   return (
     <div>
-      <h1>Tranding today</h1>
-      {movies.map(movie => {
-        return (
-        //   <ul >
-            <Link key={movie.id} to={`/movies/${movie.id}`}>
-              <p>{movie.title || movie.name}</p>
+      <h1 className={css.Title}>Tranding today</h1>
+      <div className={css.Container}>
+        {movies.map(movie => {
+          return (
+            <Link
+              key={movie.id}
+              to={`/movies/${movie.id}`}
+              className={css.MoviesLink}
+            >
+              {movie.title || movie.name}
             </Link>
-        //   </ul>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

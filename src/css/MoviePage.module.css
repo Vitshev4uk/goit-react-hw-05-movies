@@ -1,0 +1,44 @@
+body {
+    font-family: sans-serif;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.Image {
+    display: block;
+    margin: 20px;
+
+}
+.Container {
+    display: flex;
+    flex-direction: row;
+}
+.ContInfo {
+    display: flex;
+    flex-direction: column;
+}
+.Descr {
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+}
+.Text {
+    max-width: 600px;
+    margin-bottom: 30px;
+}

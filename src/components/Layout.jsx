@@ -1,15 +1,16 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import css from '../css/Layout.module.css';
 
 function Layout() {
   return (
     <div>
-      <nav>
-        <NavLink to="/">
-          <div>Home</div>
+      <nav className={css.Navigation}>
+        <NavLink to="/" className={css.NavLink}>
+          Home
         </NavLink>
-        <NavLink to="/movies">
-          <div>Movies</div>
+        <NavLink to="/movies" className={css.NavLink}>
+          Movies
         </NavLink>
       </nav>
       <main>

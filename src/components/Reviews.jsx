@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import css from '../css/Reviews.module.css';
 
 function Reviews() {
   const [movie, setMovie] = React.useState([]);
@@ -31,9 +32,9 @@ function Reviews() {
   }, [id]);
 
   return <>
-    <div>
+    <div className={css.Container}>
       {movie.map(item => {
-        return <div key={item.id}>{item.author}: {item.content}</div>
+        return <div key={item.id} className={css.Review}> <span className={css.Author}>{item.author}:</span> {item.content}</div>
       })}
       </div>
     </>;

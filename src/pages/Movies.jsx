@@ -1,10 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
+import BackLink from 'components/BackLink';
+import css from '../css/Movies.module.css';
 
 function Movies() {
   const [movie, setMovie] = React.useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/";
 
   // console.log(searchParams.get('value'));
 
@@ -39,15 +43,16 @@ function Movies() {
 
   return (
     <>
+      <div><BackLink to={backLinkHref}>back to homepage</BackLink></div>
       <input type="text" onChange={updateInputValue} />
       <button type="submit" onClick={getMovies}>
         search
       </button>
 
-      <div>
+      <div className={css.Container}>
         {movie.map(item => {
             return (
-                <Link key={item.id} to={`/movies/${item.id}`}> <p>{ item.title}</p></Link>
+                <Link key={item.id} to={`/movies/${item.id}`} className={css.MoviesLink}>  {item.title}</Link>
           );
         })}
       </div>

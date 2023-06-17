@@ -1,0 +1,13 @@
+.Container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Author{
+    font-size: larger;
+    font-style: italic;
+    font-weight: 500;
+}
+.Review{
+    margin: 20px;
+}

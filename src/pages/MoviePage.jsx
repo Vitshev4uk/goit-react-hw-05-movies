@@ -1,11 +1,16 @@
 import React from 'react';
 import axios from 'axios';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import BackLink from 'components/BackLink';
+import css from '../css/MoviePage.module.css';
 
 function MoviePage() {
   const [movie, setMovie] = React.useState([]);
   const [genre, setGenre] = React.useState([]);
   const [date, setDate] = React.useState('');
+
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
   const idResp = useParams();
   const id = idResp.movieId;
@@ -23,8 +28,8 @@ function MoviePage() {
             },
           }
         );
-          const movie = response.data;
-          // console.log(movie.poster_path)
+        const movie = response.data;
+        // console.log(movie.poster_path)
         const genre = response.data.genres;
         const date = response.data.release_date;
         // console.log(response);
@@ -40,26 +45,41 @@ function MoviePage() {
 
   const year = date.substring(0, 4);
   return (
-      <>
-          
-          <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" width={200} />
-      <div>
-        {movie.title} ({year})
+    <>
+      <BackLink to={backLinkHref}>back to homepage</BackLink>
+      <div className={css.Container}>
+        <img
+          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+          alt=""
+          width={200}
+          className={css.Image}
+        />
+        <div className={css.ContInfo}>
+               <h2>
+          {movie.title} ({year})
+        </h2>
+        <p className={css.Text}><span className={css.Descr}>Overview:</span>
+           <br /> {movie.overview}
+        </p>
+        <p> <span className={css.Descr}>Genres:</span></p>
+        {genre.map(genr => {
+          return <p key={genr.id}>{genr.name}</p>;
+        })}
+        </div>
+   
       </div>
-      <div>
-        Overview: <br /> {movie.overview}
-      </div>
-      <div>Genres</div>
-      {genre.map(genr => {
-        return <div key={genr.id}>{genr.name}</div>;
-      })}
+      <ul>
+        <li>
+          <Link to="cast">Cast</Link>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <Link to="revievs">Reviews</Link>
+        </li>
+      </ul>
 
-      <ul> <li><Link to='cast'>Cast</Link></li></ul>
-      <ul> <li> <Link to='revievs'>Reviews</Link></li></ul>
-
-      <Outlet/>
-    
-
+      <Outlet />
     </>
   );
 }

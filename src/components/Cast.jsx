@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import css from '../css/Cast.module.css';
 
 function Cast() {
 
@@ -32,9 +33,9 @@ const [movie, setMovie] = React.useState([]);
   }, [id]);
 
   return <>
-    <div>
+    <div className={css.Container}>
       {movie.map(item => {
-        return <div key={item.id}> <p>{item.name}</p> <img src={`https://image.tmdb.org/t/p/original${item.profile_path}`} alt="" width={150}/></div>
+        return <div key={item.id}> <p className={css.Name}>{item.name}</p> <img src={`https://image.tmdb.org/t/p/original${item.profile_path}`} alt="" width={150}/></div>
       })}
       </div>
     </>;

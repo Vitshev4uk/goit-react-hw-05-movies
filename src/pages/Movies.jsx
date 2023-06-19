@@ -9,12 +9,9 @@ function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
-
-  // console.log(searchParams.get('value'));
+  // не розумію після слеша додаю movies і падає сторінка
 
   const inputValue = searchParams.get('value');
-
-  // const [value, setValue] = React.useState('');
 
   async function getMovies() {
     try {
@@ -44,7 +41,7 @@ function Movies() {
   return (
     <>
       <div><BackLink to={backLinkHref}>back to homepage</BackLink></div>
-      <input type="text" onChange={updateInputValue} />
+      <input type="text" onChange={updateInputValue} className={ css.Input} />
       <button type="submit" onClick={getMovies}>
         search
       </button>

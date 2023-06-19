@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import BackLink from 'components/BackLink';
 import css from '../css/MoviePage.module.css';
+import { Suspense } from 'react';
 
 function MoviePage() {
   const [movie, setMovie] = React.useState([]);
@@ -15,7 +16,6 @@ function MoviePage() {
   const idResp = useParams();
   const id = idResp.movieId;
   console.log(id);
-  // const location = useLocation();
 
   React.useEffect(() => {
     async function getMovies() {
@@ -29,10 +29,8 @@ function MoviePage() {
           }
         );
         const movie = response.data;
-        // console.log(movie.poster_path)
         const genre = response.data.genres;
         const date = response.data.release_date;
-        // console.log(response);
         setMovie(movie);
         setGenre(genre);
         setDate(date);
@@ -70,16 +68,17 @@ function MoviePage() {
       </div>
       <ul>
         <li>
-          <Link to="cast">Cast</Link>
+          <Link  className={css.Link} to="cast">Cast</Link>
         </li>
       </ul>
       <ul>
         <li>
-          <Link to="revievs">Reviews</Link>
+          <Link className={css.Link} to="revievs">Reviews</Link>
         </li>
       </ul>
-
-      <Outlet />
+      <Suspense fallback={<div>...Loading</div>}>
+          <Outlet />
+      </Suspense>
     </>
   );
 }

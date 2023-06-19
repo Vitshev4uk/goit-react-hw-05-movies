@@ -32,3 +32,8 @@ ol {
 .MoviesLink:hover {
     color: orange
 }
+.Input {
+    width: 200px;
+    height: 15px;
+    margin: 20px;
+}

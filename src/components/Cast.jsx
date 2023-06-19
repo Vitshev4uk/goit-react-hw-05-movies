@@ -9,7 +9,6 @@ const [movie, setMovie] = React.useState([]);
 
   const idResp = useParams();
   const id = idResp.movieId;
-//   console.log(id);
 
   React.useEffect(() => {
     async function getMovies() {

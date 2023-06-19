@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { useSearchParams, Link, useLocation } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 // import BackLink from 'components/BackLink';
 import css from '../css/Movies.module.css';
 

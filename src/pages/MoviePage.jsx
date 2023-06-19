@@ -1,4 +1,5 @@
 import React from 'react';
+// import { useRef } from 'react';
 import axios from 'axios';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import BackLink from 'components/BackLink';
@@ -43,6 +44,7 @@ function MoviePage() {
     getMovies();
   }, [id]);
 
+  console.log(location)
   const year = date.substring(0, 4);
   return (
     <>

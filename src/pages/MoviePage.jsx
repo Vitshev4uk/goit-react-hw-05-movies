@@ -12,7 +12,7 @@ function MoviePage() {
 
   const location = useLocation();
 
-  const backLink = location.state?.from && '/';
+  const backLink = location.state?.from ?? '/';
   // я не розумію де цей стан задати шоб воно вибирало
 
   const idResp = useParams();
@@ -46,7 +46,6 @@ function MoviePage() {
   const year = date.substring(0, 4);
   return (
     <>
-      {/* в лінку я не можу стан дати типу: state={{from: location}} */}
       <BackLink to={backLink}>back to homepage</BackLink>
       <div className={css.Container}>
         <img

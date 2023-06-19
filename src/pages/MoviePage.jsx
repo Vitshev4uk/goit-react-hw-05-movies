@@ -11,7 +11,9 @@ function MoviePage() {
   const [date, setDate] = React.useState('');
 
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+
+  const backLink = location.state?.from && '/';
+  // я не розумію де цей стан задати шоб воно вибирало
 
   const idResp = useParams();
   const id = idResp.movieId;
@@ -44,7 +46,8 @@ function MoviePage() {
   const year = date.substring(0, 4);
   return (
     <>
-      <BackLink to={backLinkHref} state={{from:location}}>back to homepage</BackLink>
+      {/* в лінку я не можу стан дати типу: state={{from: location}} */}
+      <BackLink to={backLink}>back to homepage</BackLink>
       <div className={css.Container}>
         <img
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}

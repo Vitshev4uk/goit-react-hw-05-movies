@@ -44,7 +44,7 @@ function MoviePage() {
   const year = date.substring(0, 4);
   return (
     <>
-      <BackLink to={backLinkHref}>back to homepage</BackLink>
+      <BackLink to={backLinkHref} state={{from:location}}>back to homepage</BackLink>
       <div className={css.Container}>
         <img
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}

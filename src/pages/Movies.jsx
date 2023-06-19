@@ -1,14 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { useSearchParams, Link, useLocation } from 'react-router-dom';
-import BackLink from 'components/BackLink';
+// import BackLink from 'components/BackLink';
 import css from '../css/Movies.module.css';
 
 function Movies() {
   const [movie, setMovie] = React.useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/";
+  // const location = useLocation();
+  // const backLinkHref = location.state?.from ?? "/";
   // не розумію після слеша додаю movies і падає сторінка
 
   const inputValue = searchParams.get('value');
@@ -40,7 +40,7 @@ function Movies() {
 
   return (
     <>
-      <div><BackLink to={backLinkHref}>back to homepage</BackLink></div>
+      {/* <div><BackLink to={backLinkHref}>back to homepage</BackLink></div> */}
       <input type="text" onChange={updateInputValue} className={ css.Input} />
       <button type="submit" onClick={getMovies}>
         search

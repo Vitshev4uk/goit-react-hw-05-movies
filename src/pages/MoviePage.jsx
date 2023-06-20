@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useRef } from 'react';
 import axios from 'axios';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import BackLink from 'components/BackLink';
@@ -14,7 +13,6 @@ function MoviePage() {
   const location = useLocation();
 
   const backLink = location.state?.from ?? '/';
-  // я не розумію де цей стан задати шоб воно вибирало
 
   const idResp = useParams();
   const id = idResp.movieId;
@@ -44,11 +42,11 @@ function MoviePage() {
     getMovies();
   }, [id]);
 
-  console.log(location)
+  console.log(location);
   const year = date.substring(0, 4);
   return (
     <>
-      <BackLink to={backLink}>back to homepage</BackLink>
+      <BackLink to={backLink}>go back</BackLink>
       <div className={css.Container}>
         <img
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
@@ -57,31 +55,37 @@ function MoviePage() {
           className={css.Image}
         />
         <div className={css.ContInfo}>
-               <h2>
-          {movie.title} ({year})
-        </h2>
-        <p className={css.Text}><span className={css.Descr}>Overview:</span>
-           <br /> {movie.overview}
-        </p>
-        <p> <span className={css.Descr}>Genres:</span></p>
-        {genre.map(genr => {
-          return <p key={genr.id}>{genr.name}</p>;
-        })}
+          <h2>
+            {movie.title} ({year})
+          </h2>
+          <p className={css.Text}>
+            <span className={css.Descr}>Overview:</span>
+            <br /> {movie.overview}
+          </p>
+          <p>
+            <span className={css.Descr}>Genres:</span>
+          </p>
+          {genre.map(genr => {
+            return <p key={genr.id}>{genr.name}</p>;
+          })}
         </div>
-   
       </div>
       <ul>
         <li>
-          <Link  className={css.Link} to="cast">Cast</Link>
+          <Link className={css.Link} to="cast">
+            Cast
+          </Link>
         </li>
       </ul>
       <ul>
         <li>
-          <Link className={css.Link} to="revievs">Reviews</Link>
+          <Link className={css.Link} to="revievs">
+            Reviews
+          </Link>
         </li>
       </ul>
       <Suspense fallback={<div>...Loading</div>}>
-          <Outlet />
+        <Outlet />
       </Suspense>
     </>
   );
